@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "youtube-summarizer"
+version = "1.0.0"
+description = "Modular YouTube transcript summarizer and question-answering app"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "faiss-cpu>=1.8.0",
+  "gradio>=5.0.0",
+  "langchain-core>=1.0.0",
+  "langchain-openai>=1.0.0",
+  "langchain-text-splitters>=1.0.0",
+  "numpy>=1.26,<3",
+  "python-dotenv>=1.0.0",
+  "requests>=2.31.0",
+  "youtube-transcript-api>=1.2.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "pytest-cov>=5.0.0",
+]
+
+[project.scripts]
+youtube-summarizer = "main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["youtube_app*"]
